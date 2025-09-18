@@ -5,7 +5,7 @@
 
 🚀 **Web apps & tools**
 
-🧩 **A movie streaming service**
+🎬 **A movie streaming service**
 
 🌐 **a web proxy using static**
 
