@@ -3,42 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RunSpace - Coming Soon</title>
+    <title>RunSpace</title>
+    <link rel="icon" type="image/svg+xml" href="https://files.catbox.moe/aylrdu.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-image: url('https://github.com/astrojdev/runspace/blob/main/bg.png?raw=true');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a1a;
+            background-image: radial-gradient(circle at top left, rgba(76, 0, 255, 0.2), transparent 30%),
+                              radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.15), transparent 40%);
+            overflow: hidden;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .squircle {
+            border-radius: 30%;
+            overflow: hidden;
+            width: 64px;
+            height: 64px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .squircle:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .sidebar-icon, .browser-nav-button {
+            transition: transform 0.2s ease-in-out;
+        }
+        .sidebar-icon:hover, .browser-nav-button:hover {
+            transform: scale(1.2);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen flex-col">
+<body class="text-white">
+    <div class="flex h-screen">
+        <aside class="hidden sm:flex flex-col items-center w-16 bg-black bg-opacity-20 py-4">
+            <div class="flex flex-col items-center space-y-2">
+                <a href="#" id="top-home-link" class="p-3 sidebar-icon text-white" title="Home">
+                    <i class="fa-solid fa-house fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="Games" data-embed-url="/games.html" data-display-url="/games">
+                    <i class="fa-solid fa-gamepad fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="Apps" data-embed-url="/apps.html" data-display-url="/apps">
+                    <i class="fa-solid fa-screwdriver-wrench fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="Browser" data-embed-url="/search.html" data-display-url="/search">
+                    <i class="fa-solid fa-globe fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="RSCode Editor" data-embed-url="/code.html" data-display-url="/code">
+                    <i class="fa-solid fa-code fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="Streaming" data-embed-url="/stream.html" data-display-url="/stream">
+                    <i class="fa-solid fa-tv fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="Partners" data-embed-url="/partners.html" data-display-url="/partners">
+                    <i class="fa-solid fa-handshake fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="Settings" data-embed-url="/settings.html" data-display-url="/settings">
+                    <i class="fa-solid fa-cog fa-fw text-xl"></i>
+                </a>
+                <a href="#" class="p-3 sidebar-icon text-white sidebar-nav-link" title="VM" data-embed-url="/vm.html" data-display-url="/vm">
+                    <i class="fa-solid fa-hard-disk fa-fw text-xl"></i>
+                </a>
+            </div>
+        </aside>
 
-    <div class="text-center p-8">
-        <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-fade-in-down">Welcome to RunSpace.</h1>
-        <p class="text-2xl md:text-3xl text-white mb-8 animate-fade-in-up">Coming soon.</p>
-        
-        <div class="flex justify-center space-x-6">
-            <a href="#" class="text-white hover:text-gray-300 transform hover:scale-110 transition-all duration-300">
-                <i class="fab fa-discord fa-3x"></i>
-            </a>
-            <a href="#" class="text-white hover:text-gray-300 transform hover:scale-110 transition-all duration-300">
-                <i class="fab fa-github fa-3x"></i>
-            </a>
-        </div>
+        <main id="main-container" class="flex-1 flex flex-col items-center justify-center p-4 sm:p-8 relative overflow-hidden">
+            <div id="main-content" class="w-full max-w-2xl mx-auto text-center">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                     <i class="fa-solid fa-rocket text-6xl md:text-7xl"></i>
+                     <h1 class="text-6xl md:text-7xl font-bold tracking-tighter">RunSpace</h1>
+                </div>
+                <p class="text-white text-xl mb-6">this is the beta ig</p>
+                <div class="relative w-full mb-8">
+                    <form id="search-form">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+                            <i class="fa-solid fa-magnifying-glass text-xl text-gray-400"></i>
+                        </div>
+                        <input id="search-input" type="text" placeholder="What are you looking for?" class="w-full text-lg py-4 pl-12 pr-6 rounded-full glass-effect focus:outline-none focus:ring-2 focus:ring-purple-500 transition-shadow">
+                    </form>
+                </div>
+                <div class="flex justify-center items-center gap-4 md:gap-6">
+                    <a href="#" class="squircle-link" data-embed-url="https://www.google.com/search?igu=1" data-display-url="google.com"><img src="https://cdn.jim-nielsen.com/ios/512/google-2015-10-22.png?rf=1024" alt="Google" class="squircle"></a>
+                    <a href="#" class="squircle-link" data-embed-url="https://www.youtube.com" data-display-url="youtube.com"><img src="https://static.wikia.nocookie.net/ipod/images/e/e7/YouTube_iOS_2019.png/revision/latest?cb=20200610180756" alt="YouTube" class="squircle"></a>
+                    <a href="#" class="squircle-link" data-embed-url="https://discord.com" data-display-url="discord.com"><img src="https://static.vecteezy.com/system/resources/previews/006/892/625/non_2x/discord-logo-icon-editorial-free-vector.jpg" alt="Discord" class="squircle"></a>
+                    <a href="#" class="squircle-link" data-embed-url="https://play.geforcenow.com" data-display-url="play.geforcenow.com"><img src="https://play-lh.googleusercontent.com/_-b_HQXrVyyhZSHj_BoE9u_-cxkcHDH_yLX5rDjJsFMIfsCNQs9F3QP4JvEFcWaSIz0" alt="Nvidia Geforce" class="squircle"></a>
+                    <a href="#" class="squircle-link" data-embed-url="https://www.reddit.com" data-display-url="reddit.com"><img src="https://play-lh.googleusercontent.com/YlsjgA1pFEUqNaypaxE5ajushTBOt8IxVk_UEqzaXT7_n3JDgFq6KgtuE8tPBpvaCntB" alt="Reddit" class="squircle"></a>
+                </div>
+            </div>
+            <div id="browser-container" class="hidden w-full h-full flex flex-col glass-effect overflow-hidden">
+                <div class="flex items-center p-2 bg-black bg-opacity-20">
+                    <button id="browser-back" class="p-2 browser-nav-button mr-1"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="browser-forward" class="p-2 browser-nav-button mr-1"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button id="browser-refresh" class="p-2 browser-nav-button mr-2"><i class="fa-solid fa-rotate-right"></i></button>
+                    <div class="flex-grow flex items-center bg-black bg-opacity-30 rounded-full px-3 mx-2">
+                         <i class="fa-solid fa-lock text-green-500 mr-2"></i>
+                         <input id="address-bar" type="text" class="w-full bg-transparent p-1 focus:outline-none">
+                    </div>
+                    <button id="browser-close" class="p-2 browser-nav-button"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <iframe id="content-frame" class="w-full h-full bg-white" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts"></iframe>
+            </div>
+            <footer id="footer" class="absolute bottom-6">
+                <div class="text-sm text-gray-400 px-4 py-2 rounded-full glass-effect">
+                    &copy; 2025 RunSpace Services
+                </div>
+            </footer>
+        </main>
     </div>
-
     <script>
-        console.log("RunSpace page loaded.");
+        const mainContainer = document.getElementById('main-container');
+        const mainContent = document.getElementById('main-content');
+        const browserContainer = document.getElementById('browser-container');
+        const contentFrame = document.getElementById('content-frame');
+        const footer = document.getElementById('footer');
+        const topHomeLink = document.getElementById('top-home-link');
+        const navLinks = document.querySelectorAll('.sidebar-nav-link');
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+        const addressBar = document.getElementById('address-bar');
+        const browserClose = document.getElementById('browser-close');
+        const browserRefresh = document.getElementById('browser-refresh');
+        const squircleLinks = document.querySelectorAll('.squircle-link');
+
+        function showHomePage() {
+            mainContent.classList.remove('hidden');
+            footer.classList.remove('hidden');
+            mainContainer.classList.add('items-center', 'justify-center', 'p-4', 'sm:p-8');
+            browserContainer.classList.add('hidden');
+            contentFrame.src = 'about:blank';
+        }
+        
+        function loadUrlInBrowser(embedUrl, displayUrl) {
+            mainContent.classList.add('hidden');
+            footer.classList.add('hidden');
+            mainContainer.classList.remove('items-center', 'justify-center', 'p-4', 'sm:p-8');
+            try {
+                 contentFrame.src = embedUrl;
+            } catch (error) {
+                console.error("Error setting iframe source:", error);
+                contentFrame.src = 'about:blank';
+            }
+            addressBar.value = displayUrl;
+            browserContainer.classList.remove('hidden');
+        }
+
+        [topHomeLink, browserClose].forEach(el => el.addEventListener('click', (e) => {
+            e.preventDefault();
+            showHomePage();
+        }));
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadUrlInBrowser(link.dataset.embedUrl, link.dataset.displayUrl);
+            });
+        });
+        
+        squircleLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadUrlInBrowser(link.dataset.embedUrl, link.dataset.displayUrl);
+            });
+        });
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            if (query) {
+                const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                loadUrlInBrowser(url, query);
+                searchInput.value = '';
+            }
+        });
+
+        addressBar.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                let url = addressBar.value.trim();
+                if (url) {
+                    let searchUrl = url.includes('.') && !url.includes(' ') ?
+                        (url.startsWith('http') ? url : 'https://' + url) :
+                        `https://www.google.com/search?q=${encodeURIComponent(url)}`;
+                    loadUrlInBrowser(searchUrl, url);
+                }
+            }
+        });
+
+        browserRefresh.addEventListener('click', () => {
+            if (contentFrame.src) {
+                contentFrame.src = contentFrame.src;
+            }
+        });
     </script>
 </body>
 </html>
-
 
